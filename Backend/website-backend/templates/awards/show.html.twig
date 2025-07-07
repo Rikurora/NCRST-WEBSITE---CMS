@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Awards{% endblock %}
+
+{% block body %}
+    <h1>Awards</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ award.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ award.title }}</td>
+            </tr>
+            <tr>
+                <th>Recipient</th>
+                <td>{{ award.recipient }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ award.description }}</td>
+            </tr>
+            <tr>
+                <th>Award_category</th>
+                <td>{{ award.awardCategory }}</td>
+            </tr>
+            <tr>
+                <th>Award_date</th>
+                <td>{{ award.awardDate ? award.awardDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image_url</th>
+                <td>{{ award.imageUrl }}</td>
+            </tr>
+            <tr>
+                <th>Achievement_details</th>
+                <td>{{ award.achievementDetails }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ award.createdAt ? award.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ award.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Display_order</th>
+                <td>{{ award.displayOrder }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_awards_index') }}">back to list</a>
+
+    <a href="{{ path('app_awards_edit', {'id': award.id}) }}">edit</a>
+
+    {{ include('awards/_delete_form.html.twig') }}
+{% endblock %}

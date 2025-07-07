@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ImpactMetrics{% endblock %}
+
+{% block body %}
+    <h1>Create new ImpactMetrics</h1>
+
+    {{ include('impact_metrics/_form.html.twig') }}
+
+    <a href="{{ path('app_impact_metrics_index') }}">back to list</a>
+{% endblock %}

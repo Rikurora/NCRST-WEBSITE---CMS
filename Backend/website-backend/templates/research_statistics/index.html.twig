@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ResearchStatistics index{% endblock %}
+
+{% block body %}
+    <h1>ResearchStatistics index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+                <th>Metric_name</th>
+                <th>Value</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th>Year</th>
+                <th>Created_at</th>
+                <th>Is_active</th>
+                <th>Display_order</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for research_statistic in research_statistics %}
+            <tr>
+                <td>{{ research_statistic.id }}</td>
+                <td>{{ research_statistic.category }}</td>
+                <td>{{ research_statistic.metricName }}</td>
+                <td>{{ research_statistic.value }}</td>
+                <td>{{ research_statistic.description }}</td>
+                <td>{{ research_statistic.icon }}</td>
+                <td>{{ research_statistic.year }}</td>
+                <td>{{ research_statistic.createdAt ? research_statistic.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ research_statistic.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ research_statistic.displayOrder }}</td>
+                <td>
+                    <a href="{{ path('app_research_statistics_show', {'id': research_statistic.id}) }}">show</a>
+                    <a href="{{ path('app_research_statistics_edit', {'id': research_statistic.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_research_statistics_new') }}">Create new</a>
+{% endblock %}

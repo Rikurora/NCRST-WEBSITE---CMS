@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NsfStatistics{% endblock %}
+
+{% block body %}
+    <h1>NsfStatistics</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ nsf_statistic.id }}</td>
+            </tr>
+            <tr>
+                <th>Statistic_name</th>
+                <td>{{ nsf_statistic.statisticName }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ nsf_statistic.value }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ nsf_statistic.description }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ nsf_statistic.year }}</td>
+            </tr>
+            <tr>
+                <th>Chart_type</th>
+                <td>{{ nsf_statistic.chartType }}</td>
+            </tr>
+            <tr>
+                <th>Chart_data</th>
+                <td>{{ nsf_statistic.chartData }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ nsf_statistic.createdAt ? nsf_statistic.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ nsf_statistic.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Display_order</th>
+                <td>{{ nsf_statistic.displayOrder }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nsf_statistics_index') }}">back to list</a>
+
+    <a href="{{ path('app_nsf_statistics_edit', {'id': nsf_statistic.id}) }}">edit</a>
+
+    {{ include('nsf_statistics/_delete_form.html.twig') }}
+{% endblock %}

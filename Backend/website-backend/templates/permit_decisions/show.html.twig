@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PermitDecisions{% endblock %}
+
+{% block body %}
+    <h1>PermitDecisions</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ permit_decision.id }}</td>
+            </tr>
+            <tr>
+                <th>Application_reference</th>
+                <td>{{ permit_decision.applicationReference }}</td>
+            </tr>
+            <tr>
+                <th>Applicant_name</th>
+                <td>{{ permit_decision.applicantName }}</td>
+            </tr>
+            <tr>
+                <th>Permit_type</th>
+                <td>{{ permit_decision.permitType }}</td>
+            </tr>
+            <tr>
+                <th>Application_description</th>
+                <td>{{ permit_decision.applicationDescription }}</td>
+            </tr>
+            <tr>
+                <th>Application_date</th>
+                <td>{{ permit_decision.applicationDate ? permit_decision.applicationDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Decision</th>
+                <td>{{ permit_decision.decision }}</td>
+            </tr>
+            <tr>
+                <th>Decision_date</th>
+                <td>{{ permit_decision.decisionDate ? permit_decision.decisionDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Decision_reason</th>
+                <td>{{ permit_decision.decisionReason }}</td>
+            </tr>
+            <tr>
+                <th>Conditions</th>
+                <td>{{ permit_decision.conditions }}</td>
+            </tr>
+            <tr>
+                <th>Expiry_date</th>
+                <td>{{ permit_decision.expiryDate ? permit_decision.expiryDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ permit_decision.createdAt ? permit_decision.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ permit_decision.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Display_order</th>
+                <td>{{ permit_decision.displayOrder }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_permit_decisions_index') }}">back to list</a>
+
+    <a href="{{ path('app_permit_decisions_edit', {'id': permit_decision.id}) }}">edit</a>
+
+    {{ include('permit_decisions/_delete_form.html.twig') }}
+{% endblock %}

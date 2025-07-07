@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ResearchStatistics{% endblock %}
+
+{% block body %}
+    <h1>Edit ResearchStatistics</h1>
+
+    {{ include('research_statistics/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_research_statistics_index') }}">back to list</a>
+
+    {{ include('research_statistics/_delete_form.html.twig') }}
+{% endblock %}

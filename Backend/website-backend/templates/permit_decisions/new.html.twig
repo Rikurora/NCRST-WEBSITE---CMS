@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PermitDecisions{% endblock %}
+
+{% block body %}
+    <h1>Create new PermitDecisions</h1>
+
+    {{ include('permit_decisions/_form.html.twig') }}
+
+    <a href="{{ path('app_permit_decisions_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NCRST Custom Colors */
+:root {
+  --ncrst-grey: #777675;
+  --ncrst-gold: #FFD332;
+  --ncrst-green: #009E85;
+  --ncrst-blue: #312783;
+  --ncrst-yellow: #F59E0B;
+  --ncrst-grey-light: #f8f8f8;
+  --ncrst-grey-dark: #5a5958;
+}
+
+/* Custom Tailwind Classes */
+@layer components {
+  .btn-primary {
+    @apply bg-ncrst-blue text-white hover:bg-ncrst-blue/90 focus:ring-ncrst-blue/50;
+  }
+  
+  .btn-secondary {
+    @apply bg-ncrst-grey text-white hover:bg-ncrst-grey/90 focus:ring-ncrst-grey/50;
+  }
+  
+  .btn-outline {
+    @apply border border-ncrst-blue text-ncrst-blue hover:bg-ncrst-blue hover:text-white focus:ring-ncrst-blue/50;
+  }
+  
+  .card-ncrst {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+  
+  .card-ncrst-gold {
+    @apply border-l-4 border-ncrst-gold bg-gradient-to-r from-yellow-50 to-white;
+  }
+  
+  .card-ncrst-grey {
+    @apply border-l-4 border-ncrst-grey bg-gradient-to-r from-gray-50 to-white;
+  }
+  
+  .card-ncrst-blue {
+    @apply border-l-4 border-ncrst-blue bg-gradient-to-r from-blue-50 to-white;
+  }
+  
+  .card-ncrst-green {
+    @apply border-l-4 border-ncrst-green bg-gradient-to-r from-green-50 to-white;
+  }
+  
+  .badge-status {
+    @apply px-2 py-1 text-xs font-medium rounded-full;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-error {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .badge-info {
+    @apply bg-gray-100 text-gray-800;
+  }
+  
+  .input-ncrst {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ncrst-blue focus:border-transparent;
+  }
+  
+  .select-ncrst {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ncrst-blue focus:border-transparent;
+  }
+  
+  .textarea-ncrst {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-ncrst-blue focus:border-transparent resize-vertical;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-ncrst {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-ncrst {
+  animation: pulse-ncrst 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ncrst-grey);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ncrst-grey-dark);
+}
+
+/* Focus Styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-ncrst-blue focus:ring-offset-2;
+}
+
+/* Loading Spinner */
+.spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300 border-t-ncrst-blue;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-ncrst {
+  background: linear-gradient(135deg, var(--ncrst-blue) 0%, var(--ncrst-green) 100%);
+}
+
+.bg-gradient-ncrst-gold {
+  background: linear-gradient(135deg, var(--ncrst-gold) 0%, var(--ncrst-yellow) 100%);
+}
+
+/* Text Gradients */
+.text-gradient-ncrst {
+  background: linear-gradient(135deg, var(--ncrst-blue) 0%, var(--ncrst-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Typography */
+.text-responsive {
+  @apply text-sm sm:text-base lg:text-lg;
+}
+
+.text-responsive-lg {
+  @apply text-lg sm:text-xl lg:text-2xl;
+}
+
+.text-responsive-xl {
+  @apply text-xl sm:text-2xl lg:text-3xl;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+  
+  .print-break-avoid {
+    page-break-inside: avoid;
+  }
+} 

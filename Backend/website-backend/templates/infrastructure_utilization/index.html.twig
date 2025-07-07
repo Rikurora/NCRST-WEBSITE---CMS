@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InfrastructureUtilization index{% endblock %}
+
+{% block body %}
+    <h1>InfrastructureUtilization index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Infrastructure_name</th>
+                <th>Metric_name</th>
+                <th>Value</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Created_at</th>
+                <th>Is_active</th>
+                <th>Display_order</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for infrastructure_utilization in infrastructure_utilizations %}
+            <tr>
+                <td>{{ infrastructure_utilization.id }}</td>
+                <td>{{ infrastructure_utilization.infrastructureName }}</td>
+                <td>{{ infrastructure_utilization.metricName }}</td>
+                <td>{{ infrastructure_utilization.value }}</td>
+                <td>{{ infrastructure_utilization.description }}</td>
+                <td>{{ infrastructure_utilization.year }}</td>
+                <td>{{ infrastructure_utilization.createdAt ? infrastructure_utilization.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ infrastructure_utilization.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ infrastructure_utilization.displayOrder }}</td>
+                <td>
+                    <a href="{{ path('app_infrastructure_utilization_show', {'id': infrastructure_utilization.id}) }}">show</a>
+                    <a href="{{ path('app_infrastructure_utilization_edit', {'id': infrastructure_utilization.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_infrastructure_utilization_new') }}">Create new</a>
+{% endblock %}

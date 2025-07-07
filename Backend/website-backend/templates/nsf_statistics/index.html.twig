@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NsfStatistics index{% endblock %}
+
+{% block body %}
+    <h1>NsfStatistics index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Statistic_name</th>
+                <th>Value</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Chart_type</th>
+                <th>Chart_data</th>
+                <th>Created_at</th>
+                <th>Is_active</th>
+                <th>Display_order</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nsf_statistic in nsf_statistics %}
+            <tr>
+                <td>{{ nsf_statistic.id }}</td>
+                <td>{{ nsf_statistic.statisticName }}</td>
+                <td>{{ nsf_statistic.value }}</td>
+                <td>{{ nsf_statistic.description }}</td>
+                <td>{{ nsf_statistic.year }}</td>
+                <td>{{ nsf_statistic.chartType }}</td>
+                <td>{{ nsf_statistic.chartData }}</td>
+                <td>{{ nsf_statistic.createdAt ? nsf_statistic.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ nsf_statistic.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ nsf_statistic.displayOrder }}</td>
+                <td>
+                    <a href="{{ path('app_nsf_statistics_show', {'id': nsf_statistic.id}) }}">show</a>
+                    <a href="{{ path('app_nsf_statistics_edit', {'id': nsf_statistic.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nsf_statistics_new') }}">Create new</a>
+{% endblock %}

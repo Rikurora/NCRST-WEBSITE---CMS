@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Awards index{% endblock %}
+
+{% block body %}
+    <h1>Awards index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Recipient</th>
+                <th>Description</th>
+                <th>Award_category</th>
+                <th>Award_date</th>
+                <th>Image_url</th>
+                <th>Achievement_details</th>
+                <th>Created_at</th>
+                <th>Is_active</th>
+                <th>Display_order</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for award in awards %}
+            <tr>
+                <td>{{ award.id }}</td>
+                <td>{{ award.title }}</td>
+                <td>{{ award.recipient }}</td>
+                <td>{{ award.description }}</td>
+                <td>{{ award.awardCategory }}</td>
+                <td>{{ award.awardDate ? award.awardDate|date('Y-m-d') : '' }}</td>
+                <td>{{ award.imageUrl }}</td>
+                <td>{{ award.achievementDetails }}</td>
+                <td>{{ award.createdAt ? award.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ award.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ award.displayOrder }}</td>
+                <td>
+                    <a href="{{ path('app_awards_show', {'id': award.id}) }}">show</a>
+                    <a href="{{ path('app_awards_edit', {'id': award.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_awards_new') }}">Create new</a>
+{% endblock %}

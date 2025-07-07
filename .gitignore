@@ -1,0 +1,186 @@
+# Symfony Backend
+/Backend/website-backend/var/
+/Backend/website-backend/vendor/
+/Backend/website-backend/.env
+/Backend/website-backend/.env.local
+/Backend/website-backend/.env.*.local
+/Backend/website-backend/config/jwt/*.pem
+/Backend/website-backend/public/uploads/*
+!Backend/website-backend/public/uploads/.gitkeep
+
+# React Frontend
+/packages/*/node_modules/
+/packages/*/dist/
+/packages/*/build/
+/packages/*/.env
+/packages/*/.env.local
+/packages/*/.env.development.local
+/packages/*/.env.test.local
+/packages/*/.env.production.local
+/packages/*/npm-debug.log*
+/packages/*/yarn-debug.log*
+/packages/*/yarn-error.log*
+
+# IDE & System Files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Dependencies
+/node_modules/
+/vendor/
+
+# Build outputs
+/dist/
+/build/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache and logs
+*.cache
+*.log
+
+# Environment files
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Cursor extensions and cache
+.cursor/
+.continue/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env.test
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# PHP
+*.php~
+*.php.bak
+
+# Personal files and backups
+*.zip
+*.tar.gz
+*.rar
+backup/
+backups/
+
+# User-specific files
+NTUSER.DAT*
+*.regtrans-ms
+*.blf
+ntuser.ini
+
+# OneDrive sync files
+OneDrive/
+Desktop Files/
+
+# Other project files that shouldn't be in this repo
+Apnutrition/
+XKI_Latest/
+*.mdf
+*.ldf
+*.sln
+*.vcxproj*
+*.fbx
+*.lnk
+*.docx
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.ipynb
+*.sql 

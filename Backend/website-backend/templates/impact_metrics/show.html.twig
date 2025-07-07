@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImpactMetrics{% endblock %}
+
+{% block body %}
+    <h1>ImpactMetrics</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ impact_metric.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ impact_metric.title }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ impact_metric.value }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ impact_metric.description }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ impact_metric.icon }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ impact_metric.createdAt ? impact_metric.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ impact_metric.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Display_order</th>
+                <td>{{ impact_metric.displayOrder }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_impact_metrics_index') }}">back to list</a>
+
+    <a href="{{ path('app_impact_metrics_edit', {'id': impact_metric.id}) }}">edit</a>
+
+    {{ include('impact_metrics/_delete_form.html.twig') }}
+{% endblock %}

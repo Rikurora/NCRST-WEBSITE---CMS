@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImpactMetrics index{% endblock %}
+
+{% block body %}
+    <h1>ImpactMetrics index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Value</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th>Created_at</th>
+                <th>Is_active</th>
+                <th>Display_order</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for impact_metric in impact_metrics %}
+            <tr>
+                <td>{{ impact_metric.id }}</td>
+                <td>{{ impact_metric.title }}</td>
+                <td>{{ impact_metric.value }}</td>
+                <td>{{ impact_metric.description }}</td>
+                <td>{{ impact_metric.icon }}</td>
+                <td>{{ impact_metric.createdAt ? impact_metric.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ impact_metric.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ impact_metric.displayOrder }}</td>
+                <td>
+                    <a href="{{ path('app_impact_metrics_show', {'id': impact_metric.id}) }}">show</a>
+                    <a href="{{ path('app_impact_metrics_edit', {'id': impact_metric.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_impact_metrics_new') }}">Create new</a>
+{% endblock %}

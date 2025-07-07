@@ -1,0 +1,51 @@
+{
+  "name": "ncrst-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:cms": "npm run dev --workspace=packages/cms",
+    "dev:website": "npm run dev --workspace=packages/website",
+    "dev:frontend": "concurrently \"npm run dev:cms\" \"npm run dev:website\"",
+    "dev:backend": "cd Backend && docker-compose up -d",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "build:cms": "npm run build --workspace=packages/cms",
+    "build:website": "npm run build --workspace=packages/website",
+    "build:frontend": "npm run build --workspaces",
+    "build": "npm run build:frontend",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
+    "clean": "npm run clean --workspaces",
+    "clean:backend": "cd Backend && docker-compose down -v && docker-compose build --no-cache",
+    "clean:backend-deps": "node scripts/cleanup-backend.js",
+    "clean:all": "npm run clean && npm run clean:backend",
+    "install:all": "npm install",
+    "backend:up": "cd Backend && docker-compose up -d",
+    "backend:down": "cd Backend && docker-compose down",
+    "backend:build": "cd Backend && docker-compose build --no-cache",
+    "backend:logs": "cd Backend && docker-compose logs -f",
+    "backend:shell": "cd Backend && docker-compose exec backend bash",
+    "backend:composer": "cd Backend && docker-compose exec backend composer install",
+    "backend:composer-update": "cd Backend && docker-compose exec backend composer update",
+    "backend:migrate": "cd Backend && docker-compose exec backend php bin/console doctrine:migrations:migrate --no-interaction",
+    "backend:fresh": "npm run backend:down && npm run backend:build && npm run backend:up",
+    "setup": "npm run clean:backend-deps && npm install && npm run backend:fresh && sleep 15 && npm run backend:migrate",
+    "setup:quick": "npm install && npm run backend:up && sleep 10 && npm run backend:migrate",
+    "test:integration": "node scripts/test-integration.js",
+    "test": "npm run test:integration"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.9.1",
+    "typescript": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

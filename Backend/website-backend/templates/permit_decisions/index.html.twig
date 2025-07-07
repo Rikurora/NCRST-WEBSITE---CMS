@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PermitDecisions index{% endblock %}
+
+{% block body %}
+    <h1>PermitDecisions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Application_reference</th>
+                <th>Applicant_name</th>
+                <th>Permit_type</th>
+                <th>Application_description</th>
+                <th>Application_date</th>
+                <th>Decision</th>
+                <th>Decision_date</th>
+                <th>Decision_reason</th>
+                <th>Conditions</th>
+                <th>Expiry_date</th>
+                <th>Created_at</th>
+                <th>Is_active</th>
+                <th>Display_order</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for permit_decision in permit_decisions %}
+            <tr>
+                <td>{{ permit_decision.id }}</td>
+                <td>{{ permit_decision.applicationReference }}</td>
+                <td>{{ permit_decision.applicantName }}</td>
+                <td>{{ permit_decision.permitType }}</td>
+                <td>{{ permit_decision.applicationDescription }}</td>
+                <td>{{ permit_decision.applicationDate ? permit_decision.applicationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ permit_decision.decision }}</td>
+                <td>{{ permit_decision.decisionDate ? permit_decision.decisionDate|date('Y-m-d') : '' }}</td>
+                <td>{{ permit_decision.decisionReason }}</td>
+                <td>{{ permit_decision.conditions }}</td>
+                <td>{{ permit_decision.expiryDate ? permit_decision.expiryDate|date('Y-m-d') : '' }}</td>
+                <td>{{ permit_decision.createdAt ? permit_decision.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ permit_decision.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ permit_decision.displayOrder }}</td>
+                <td>
+                    <a href="{{ path('app_permit_decisions_show', {'id': permit_decision.id}) }}">show</a>
+                    <a href="{{ path('app_permit_decisions_edit', {'id': permit_decision.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_permit_decisions_new') }}">Create new</a>
+{% endblock %}

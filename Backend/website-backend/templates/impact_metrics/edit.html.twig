@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ImpactMetrics{% endblock %}
+
+{% block body %}
+    <h1>Edit ImpactMetrics</h1>
+
+    {{ include('impact_metrics/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_impact_metrics_index') }}">back to list</a>
+
+    {{ include('impact_metrics/_delete_form.html.twig') }}
+{% endblock %}

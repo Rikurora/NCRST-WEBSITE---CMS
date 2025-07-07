@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ResearchStatistics{% endblock %}
+
+{% block body %}
+    <h1>ResearchStatistics</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ research_statistic.id }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ research_statistic.category }}</td>
+            </tr>
+            <tr>
+                <th>Metric_name</th>
+                <td>{{ research_statistic.metricName }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ research_statistic.value }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ research_statistic.description }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ research_statistic.icon }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ research_statistic.year }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ research_statistic.createdAt ? research_statistic.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Is_active</th>
+                <td>{{ research_statistic.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Display_order</th>
+                <td>{{ research_statistic.displayOrder }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_research_statistics_index') }}">back to list</a>
+
+    <a href="{{ path('app_research_statistics_edit', {'id': research_statistic.id}) }}">edit</a>
+
+    {{ include('research_statistics/_delete_form.html.twig') }}
+{% endblock %}
